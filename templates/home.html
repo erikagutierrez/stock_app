@@ -3,23 +3,24 @@
 {% block body %}
      <script>
 
+     //create callback function. this will be run when the user presses enter or clicks submit.
       function callback (){
 
-        var stock_code = $('#stockSymbol').val();
+        var stock_code = $('#stockSymbol').val(); //use jQuery to grab stockSymbol element and get its value.
 
         var ajax_args = {
           "url": "/stock_ticker?ticker=" + stock_code,
         };
 
-        var request_obj = $.ajax(ajax_args)
+        var request_obj = $.ajax(ajax_args) //ajax will initalize and connect to URL in ajax_args. Flask runs @app.route.
 
-        request_obj.done(function( data ) { 
-          $('#testing123').html(data);
+        request_obj.done(function( data ) {
+          $('#testing123').html(data);  //use jQuery to grab testing123 and populate the div with 'data', which is the return object "html" in stock_ticker function.
 
         });
       }
 
-
+      //create interactive content with jQuery (enter key and submit)
        $(document).ready(function(){
 
              $("#submit").click(callback);
