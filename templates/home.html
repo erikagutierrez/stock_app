@@ -7,10 +7,13 @@
 
         var stock_code = $('#stockSymbol').val();
 
-        $.ajax({
-          url: "/stock_ticker?ticker=" + stock_code,
-        })
-        .done(function( data ) {
+        var ajax_args = {
+          "url": "/stock_ticker?ticker=" + stock_code,
+        };
+
+        var request_obj = $.ajax(ajax_args)
+
+        request_obj.done(function( data ) { 
           $('#testing123').html(data);
 
         });
