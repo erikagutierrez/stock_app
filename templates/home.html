@@ -1,19 +1,49 @@
 {% extends 'layout.html' %}
 
 {% block body %}
-<p></p>
-  <div class="jumbotron">
-     <div class="container">
-       <h1 class="display-3"><font face="Garamond">stock ticker</font></h1>
-     </div>
      <script>
+
+      function callback (){
+
+        var stock_code = $('#stockSymbol').val();
+
+        $.ajax({
+          url: "/stock_ticker?ticker=" + stock_code,
+        })
+        .done(function( data ) {
+          $('#testing123').html(data);
+
+        });
+      }
+
 
        $(document).ready(function(){
 
-         alert("the page loaded!");
+             $("#submit").click(callback);
+
+
+             $('#stockSymbol').keyup(function(e){
+
+                if(e.keyCode == 13){
+
+                  callback();
+                }
+              });
        });
 
      </script>
-   </div>
-  <font face="Garamond"><p>"Please enter the stock ticker code.</p></font>
+
+  <br />
+  <font face = "Helvetica"><p>Please enter the stock ticker symbol.</p></font>
+
+  <input id = "stockSymbol" type='text' placeholder='AMZN' />
+
+  <button id = "submit">Submit</button>
+
+  <br />
+  <br />
+  <div class = "bk_holder">
+    <div id="testing123">
+    </div>
+  </div>
 {% endblock %}

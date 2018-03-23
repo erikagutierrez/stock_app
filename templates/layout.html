@@ -4,17 +4,35 @@
   <head>
     <meta charset="utf-8">
     <title>Erika Gutierrez, TDI pre-Program</title>
+
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-    <style type="text/css">
-        h5 {
-          color: "white"
-        }
+    <link href="http://cdn.pydata.org/bokeh/release/bokeh-0.12.14.min.css" rel="stylesheet" type="text/css">
+    <link href="http://cdn.pydata.org/bokeh/release/bokeh-widgets-0.12.14.min.css" rel="stylesheet" type="text/css">
+
+    <style type = "text/css">
+
+      h5 {
+        color: "white"
+      }
+
+      .bk_holder {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
     </style>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="http://cdn.pydata.org/bokeh/release/bokeh-0.12.14.min.js"></script>
+    <script src="http://cdn.pydata.org/bokeh/release/bokeh-widgets-0.12.14.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
   </head>
+
   <body>
     {% include 'includes/_navbar.html' %}
     <div class = "container">
       {% block body %}{% endblock %}
     </div>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+  </body>
+
 </html>
