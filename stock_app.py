@@ -74,7 +74,7 @@ def stock_ticker():
         script, div = components(p1)
         html = script + div
 
-    except :
+    except KeyError :
         html = 'No such company.'
     return html
 
