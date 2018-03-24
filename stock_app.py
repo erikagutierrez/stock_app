@@ -1,4 +1,5 @@
 from flask import Flask, render_template, request, redirect
+import os
 
 import requests
 
@@ -14,6 +15,7 @@ from bokeh.embed import components
 from datetime import date, timedelta
 from monthdelta import monthdelta
 
+
 app = Flask(__name__)
 
 @app.route('/stock_ticker')
@@ -25,13 +27,16 @@ def stock_ticker():
         user_input = 'AMZN'
 
     '''Quandl API request'''
+    quandl = os.environ['Quandl_SECRET']
+
     yesterday = date.today() - timedelta(days=1)
     last_month = yesterday - monthdelta(1)
     yesterday = yesterday.strftime('%Y-%m-%d')
     last_month = last_month.strftime('%Y-%m-%d')
 
-    ticker = 'https://www.quandl.com/api/v3/datasets/WIKI/AAPL?trim_start=2018-02-15&trim_end=2018-03-23&api_key=v1eCq4j6XirYCp4gU9VJ'
+    ticker = 'https://www.quandl.com/api/v3/datasets/WIKI/AAPL?trim_start=2018-02-15&trim_end=2018-03-23&api_key=PlaceKeyHere'
     ticker = ticker.replace('AAPL', user_input)
+    ticker = ticker.replace('PlaceKeyHere', quandl)
     ticker = ticker.replace('2018-02-15', last_month)
     ticker = ticker.replace('2018-03-23', yesterday)
 
